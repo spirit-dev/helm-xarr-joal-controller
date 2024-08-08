@@ -14,14 +14,33 @@ image:
   pullPolicy: IfNotPresent
 
 env:
+  # default mount point
   - name: JC_SOURCE_FOLDER
-    value: /code/source_folder/configs/transmission-home/torrents # default mount point
+    value: /code/source_folder/configs/transmission-home/torrents
+  # watching for .torrent files
   - name: JC_FILE_EXTENSION
-    value: torrent # watching for .torrent files
+    value: torrent
+  # default mount point
   - name: JC_TARGET_FOLDER
-    value: /code/target_folder/torrents # default mount point
+    value: /code/target_folder/torrents
+  # Used for logging json format output
   - name: JC_ENVIRONMENT
-    value: production # Used for logging format output
+    value: production
+  # Transmission protocol (http|https)
+  - name: JC_TRANSMISSION_PROT
+    value: http
+  # Transmission host name. Equiv to the service name
+  - name: JC_TRANSMISSION_HOST
+    value: transmission.transmission
+  # Transmission url. default: transmission/rpc
+  - name: JC_TRANSMISSION_URL
+    value: transmission/rpc
+  # Transmission username
+  - name: JC_TRANSMISSION_USER
+    value:
+  # Transmission password
+  - name: JC_TRANSMISSION_PASS
+    value:
 
 volumes:
   - name: source-folder
