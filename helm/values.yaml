@@ -1,0 +1,71 @@
+fullnameOverride: joal-controller
+
+replicaCount: 1
+
+annotations: {}
+
+additionalLabels:
+  {}
+  # lbl-key: lbl-value
+
+image:
+  repository: gitlab-registry-internal.spirit-dev.net/scripts/joal-controller
+  tag: latest
+  pullPolicy: IfNotPresent
+
+env:
+  - name: JC_SOURCE_FOLDER
+    value: /code/source_folder/configs/transmission-home/torrents # default mount point
+  - name: JC_FILE_EXTENSION
+    value: torrent # watching for .torrent files
+  - name: JC_TARGET_FOLDER
+    value: /code/target_folder/torrents # default mount point
+  - name: JC_ENVIRONMENT
+    value: production # Used for logging format output
+
+volumes:
+  - name: source-folder
+    persistentVolumeClaim:
+      claimName: source-folder
+  - name: target-folder
+    persistentVolumeClaim:
+      claimName: target-folder
+
+volumeMounts:
+  - name: source-folder
+    mountPath: "/code/source_folder"
+  - name: target-folder
+    mountPath: "/code/target_folder"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# Security context for container
+securityContext: {}
+
+# Security context for pod
+# Can be used to allow ipv6 for openvpn, because
+# some VPN providers push an ipv6 route with will fail without
+# ipv6 support, see https://github.com/haugene/docker-transmission-openvpn/issues/789
+# Note that your kubelet needs to allow changing this sysctl setting, see
+# https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/#enabling-unsafe-sysctls
+#
+# - podSecurityContext:
+#     sysctls:
+#       - name: net.ipv6.conf.all.disable_ipv6
+#         value: "0"
+podSecurityContext: {}
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
