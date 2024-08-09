@@ -41,6 +41,9 @@ env:
   # Transmission password
   - name: JC_TRANSMISSION_PASS
     value:
+  # CronJob schedule (default every 5 minutes)
+  - name: JC_CRON_SCHEDULE
+    value: "*/5 * * * *"
 
 volumes:
   - name: source-folder
