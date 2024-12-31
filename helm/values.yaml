@@ -44,6 +44,9 @@ env:
   # CronJob schedule (default every 5 minutes)
   - name: JC_CRON_SCHEDULE
     value: "*/5 * * * *"
+  # Define files expired after X weeks
+  - name: JC_EXPIRES_AFTER_WEEKS
+    value: 8
 
 volumes:
   - name: source-folder
