@@ -1,10 +1,14 @@
-# Welcome to joal-controller
+# joal-controller
 
+[![GitLab Sync](https://img.shields.io/badge/gitlab_sync-joal_controller-blue?style=for-the-badge&logo=gitlab)](https://gitlab-internal.spirit-dev.net/github-mirror/helm-xarr-joal-controller) <!-- markdownlint-disable MD041 -->
+[![GitHub Mirror](https://img.shields.io/badge/github_mirror-joal_controller-blue?style=for-the-badge&logo=github)](https://github.com/spirit-dev/helm-xarr-joal-controller)
 [![App Status](https://argocd-internal.spirit-dev.net/api/badge?name=joal-controller-turingpi&revision=true&showAppName=true)](https://argocd-internal.spirit-dev.net/applications/joal-controller-turingpi)
 
-## Table of content
+<!--TOC-->
 
-[[_TOC_]]
+- [Installation process](#installation-process)
+
+<!--TOC-->
 
 ## Installation process
 
