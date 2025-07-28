@@ -12,6 +12,10 @@ image:
   repository: gitlab-registry-internal.spirit-dev.net/scripts/joal-controller
   tag: latest
   pullPolicy: IfNotPresent
+  registry:
+    url:
+    username:
+    password:
 
 env:
   # default mount point
