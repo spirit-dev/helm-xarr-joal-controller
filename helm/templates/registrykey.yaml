@@ -1,0 +1,10 @@
+{{- with .Values.image.registry }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ template "joal-controller.name" . }}-registry-key
+  namespace: {{.Release.Namespace}}
+data:
+  .dockerconfigjson: {{ printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\"}}}" .url .username .password | b64enc }}
+type: kubernetes.io/dockerconfigjson
+{{- end }}
