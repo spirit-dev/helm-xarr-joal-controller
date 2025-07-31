@@ -1,9 +1,10 @@
 {{- $ns := .Release.Namespace }}
+{{- $name := include "joal-controller.name" . }}
 {{- with .Values.image.registry }}
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ template "joal-controller.name" . }}-registry-key
+  name: {{ $name }}-registry-key
   namespace: {{ $ns }}
 data:
   .dockerconfigjson: {{ printf "{\"auths\":{\"%s\":{\"username\":\"%s\",\"password\":\"%s\"}}}" .url .username .password | b64enc }}
